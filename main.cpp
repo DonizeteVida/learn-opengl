@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 static void setViewport(GLFWwindow *window, int width, int height)
@@ -35,6 +36,14 @@ int main(int, char **)
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, setViewport);
     glfwSwapInterval(1);
+
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        std::cerr << "GLAD can't be initialized" << std::endl;
+        glfwDestroyWindow(window);
+        glfwTerminate();
+        return EXIT_FAILURE;
+    }
 
     while (!glfwWindowShouldClose(window))
     {
