@@ -13,4 +13,5 @@ examples(
     001_hello_world
     002_triangle
     003_triangle_times_2
+    004_square
 )
