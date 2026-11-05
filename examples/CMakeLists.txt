@@ -3,5 +3,13 @@ macro(example name)
     target_link_libraries(${name} learn-opengl)
 endmacro()
 
-example(001_hello_world)
-example(002_triangle)
+macro(examples)
+    foreach(name ${ARGN})
+        example(${name})
+    endforeach()
+endmacro()
+
+examples(
+    001_hello_world
+    002_triangle
+)
