@@ -1,0 +1,4 @@
+subdirs(
+    glad
+    glfw
+)
