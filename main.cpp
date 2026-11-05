@@ -2,6 +2,11 @@
 
 #include <GLFW/glfw3.h>
 
+static void setViewport(GLFWwindow *window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
+
 int main(int, char **)
 {
     GLFWwindow *window;
@@ -15,6 +20,10 @@ int main(int, char **)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
+
     window = glfwCreateWindow(640, 480, "Learn OpenGL", NULL, NULL);
     if (!window)
     {
@@ -24,15 +33,16 @@ int main(int, char **)
     }
 
     glfwMakeContextCurrent(window);
+    glfwSetFramebufferSizeCallback(window, setViewport);
     glfwSwapInterval(1);
 
     while (!glfwWindowShouldClose(window))
     {
-        std::cout << "Running our window" << std::endl;
-
         glfwPollEvents();
-
         glfwSwapBuffers(window);
+
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
     }
 
     glfwDestroyWindow(window);
