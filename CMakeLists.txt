@@ -3,5 +3,7 @@ project(learn-opengl VERSION 0.1.0 LANGUAGES C CXX)
 
 add_subdirectory(external)
 
-add_executable(learn-opengl main.cpp)
-target_link_libraries(learn-opengl glfw glad)
+add_library(learn-opengl main.cpp)
+target_link_libraries(learn-opengl PUBLIC glfw glad)
+
+add_subdirectory(examples)

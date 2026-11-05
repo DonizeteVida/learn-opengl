@@ -1,0 +1,2 @@
+add_executable(001_hello_world 001_hello_world.cpp)
+target_link_libraries(001_hello_world learn-opengl)

@@ -8,6 +8,8 @@ static void setViewport(GLFWwindow *window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
+void draw();
+
 int main(int, char **)
 {
     GLFWwindow *window;
@@ -50,8 +52,7 @@ int main(int, char **)
         glfwPollEvents();
         glfwSwapBuffers(window);
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        draw();
     }
 
     glfwDestroyWindow(window);
