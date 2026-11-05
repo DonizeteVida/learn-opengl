@@ -1,2 +1,7 @@
-add_executable(001_hello_world 001_hello_world.cpp)
-target_link_libraries(001_hello_world learn-opengl)
+macro(example name)
+    add_executable(${name} ${name}.cpp)
+    target_link_libraries(${name} learn-opengl)
+endmacro()
+
+example(001_hello_world)
+example(002_triangle)
